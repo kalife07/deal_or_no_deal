@@ -1,0 +1,15 @@
+.box{
+    background-color: yellow;
+    border: 3px, black;
+    border-style: solid;
+    margin:10px;
+    width:100px;
+    height:50px;
+    text-align:center;
+}
+
+
+
+.right_box{
+    float:right;
+}
