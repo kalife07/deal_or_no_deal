@@ -14,6 +14,9 @@ body {
     width:100px;
     height:50px;
     text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
@@ -34,6 +37,15 @@ body {
     padding:20px;
     font-size: 30px;
 
+}
+
+.left-column{
+    display: flex;
+    flex-direction: column; 
+    flex: 1 1 16.5%; 
+    /* Occupies 16.5% of the screen width */ 
+    justify-content: flex-start; 
+    /* Ensures elements align at the top */
 }
 
 #left {
