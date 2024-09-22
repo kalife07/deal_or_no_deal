@@ -1,3 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh; /* Optional, this makes the layout take full height */
+}
+
 .box{
     background-color: yellow;
     border: 3px, black;
@@ -6,10 +14,38 @@
     width:100px;
     height:50px;
     text-align:center;
+    
 }
 
 
 
 .right_box{
     float:right;
+}
+
+.flex-container{
+    display:flex;
+    
+}
+
+.flex-container > div{
+    background-color: grey;
+    margin:10px;
+    padding:20px;
+    font-size: 30px;
+
+}
+
+#left {
+    flex: 1 1 16.5%; /* Flex-grow: 1, flex-shrink: 1, flex-basis: 16.5% */
+    display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 2;
+    }
+
+
+
+#middle {
+    flex: 0 1 66%; /* Flex-grow: 0, flex-shrink: 1, flex-basis: 66% */
 }
