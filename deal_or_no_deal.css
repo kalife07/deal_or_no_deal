@@ -20,37 +20,30 @@ body {
     
 }
 
-.flex-container{
+.middle_column{
     display:flex;
+    flex-direction: row;
+    flex: 0 1 66%;
+    justify-content: flex-start;
+    flex-wrap: wrap; /* Allows divs to wrap to the next row */
     
 }
 
-.flex-container > div{
-    background-color: grey;
+.middle_column > div{
+    background-color: #66ffff;
     margin:10px;
     padding:20px;
     font-size: 30px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    border: 4px solid #0000ff;
+    border-radius: 10px;
+    color:#0000ff
 
 }
-/*
-
-.left-column{
-    display: flex;
-    flex-direction: column; 
-    flex: 1 1 16.5%; 
-    
-    justify-content: flex-start; 
-    
-}*/
-
-/*
-.left_box {
-    flex: 1 1 16.5%;
-    display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 2;
-    }*/
 
 .left_box, .right_box { display: flex; 
     align-items: center; 
@@ -66,24 +59,12 @@ body {
           flex: 1 1 16.5%;
            justify-content: flex-start; }
 
- /*   
-.right-column{
-    display:flex;
-    flex-direction: column;
-    flex: 1 1 82.5%;
-    justify-content: flex-start;
-}*/
-
-/*
-.right_box{
-    flex: 1 1 ;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    flex:2;
-}*/
-
-
-#middle {
-    flex: 0 1 66%; /* Flex-grow: 0, flex-shrink: 1, flex-basis: 66% */
+.wrapper_malette{
+    width: 70px;
+    height: 10px;
+    background-color: #ccffff;
+    border: 1px solid black;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
 }
