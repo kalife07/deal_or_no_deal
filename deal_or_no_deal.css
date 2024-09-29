@@ -20,12 +20,6 @@ body {
     
 }
 
-
-
-.right_box{
-    float:right;
-}
-
 .flex-container{
     display:flex;
     
@@ -56,6 +50,20 @@ body {
             flex: 2;
     }
 
+.right-column{
+    display:flex;
+    flex-direction: column;
+    flex: 1 1 82.5%;
+    justify-content: flex-start;
+}
+
+#right{
+    flex: 1 1 82.5%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    flex:2;
+}
 
 
 #middle {
