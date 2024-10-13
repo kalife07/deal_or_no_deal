@@ -7,7 +7,7 @@ const montants_malette = [];
 
 function montants() {
     if (montants_malette.length === 0) { // Only add if array is empty
-    for (let i=0;i<26;i++) {
+    for (let i=1;i<27;i++) {
         montants_malette.push(i);
     }
 }
@@ -37,6 +37,7 @@ middleColumn.innerHTML = "";
 montants_malette.forEach(valeur =>{
     const div = document.createElement('div');
     div.textContent = valeur;
+    div.onclick="alert(allo)";
     middleColumn.appendChild(div);
 
 })
@@ -53,3 +54,6 @@ montant_grand.forEach(valeur =>{
 }
 );
 
+function boutton_jeu(){
+    alert("boutton clické!")
+}
