@@ -37,7 +37,7 @@ middleColumn.innerHTML = "";
 montants_malette.forEach(valeur =>{
     const div = document.createElement('div');
     div.textContent = valeur;
-    div.onclick="alert(allo)";
+    div.onclick = function() { alert(valeur)};
     middleColumn.appendChild(div);
 
 })
