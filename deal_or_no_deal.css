@@ -20,14 +20,15 @@ body {
     
 }
 
-.middle_column{
-    display:flex;
-    flex-direction: row;
-    flex: 0 1 66%;
-    justify-content: flex-start;
-    flex-wrap: wrap; /* Allows divs to wrap to the next row */
-    
-}
+.middle_column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Multiple boxes in one row */
+    gap: 50px; /* Space between the boxes */
+    justify-items: center; /* Center the boxes in the grid */
+    padding: 10px;
+    max-width: 600px; /* Ensures middle column doesn't get too wide */
+   }
+   
 
 .middle_column > div{
     background-color: #66ffff;
@@ -54,10 +55,14 @@ body {
     padding:20px;
 }
 
-.left-column, .right_column { display: flex;
-         flex-direction: column;
-          flex: 1 1 16.5%;
-           justify-content: flex-start; }
+.left-column, .right_column {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1%;
+    padding:10px;
+}
+
 
 .wrapper_malette{
     width: 70px;
@@ -74,4 +79,18 @@ body {
     background-color: antiquewhite;
     height: 20px;
     width:100%;
+}
+
+#top-section{
+    width:100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#bottom-section{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    padding:10px;
 }
