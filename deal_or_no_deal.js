@@ -60,6 +60,8 @@ function boutton_jeu(){
     const message = document.createElement("div");
     message.id = "message_2";
     message.textContent = "Choisir une malette";
+    const topSection = document.getElementById("top-section"); 
+    topSection.appendChild(message);
     console.log(message);
     
 
