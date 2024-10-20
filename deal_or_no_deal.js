@@ -55,5 +55,16 @@ montant_grand.forEach(valeur =>{
 );
 
 function boutton_jeu(){
-    alert("boutton clické!")
+    alert("boutton clické!");
+    document.getElementById("boutton_jeu").style.display="none";
+    const message = document.createElement("div");
+    message.id = "message_2";
+    message.textContent = "Choisir une malette";
+    console.log(message);
+    
+
+}
+
+function driver() {
+    
 }
