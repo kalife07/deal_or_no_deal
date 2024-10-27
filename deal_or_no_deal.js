@@ -4,9 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {})
 const montant_petit = ["$1","$5","$10","$25","$50","$75","$100","$200","$300","$400","$500","$750"];
 const montant_grand = ["$1,000","$5,000","$10,000","$25,000","$50,000","$75,000","$100,000","$200,000","$300,000","$400,000","$500,000","$750,000","$1,000,000"];
 const montants_malette = [];
-const array_messages = ["malette","Bienvenue au jeu!", "\"Deal or No Deal\" est un jeu où le joueur choisit une boîte contenant une somme d'argent cachée. Ensuite, il ouvre d'autres boîtes pour révéler leurs montants. Après chaque série d'ouvertures, un banquier propose une offre d'argent pour racheter sa boîte. Le joueur doit décider d'accepter l'offre (\"deal\") ou de continuer à jouer (\"no deal\") pour tenter de gagner plus. Le jeu se termine quand le joueur accepte une offre ou ouvre toutes les boîtes.", "Commencer le jeu", "Choisir une malette", "La malette choisi est ", ". Svp choisir", "L'offre du banquier est", "Ta malette contient", "$", "Merci d'avoir joué Deal or no deal"];
+const array_messages = ["malette","Bienvenue au jeu!", "\"Deal or No Deal\" est un jeu où le joueur choisit une boîte contenant une somme d'argent cachée. Ensuite, il ouvre d'autres boîtes pour révéler leurs montants. Après chaque série d'ouvertures, un banquier propose une offre d'argent pour racheter sa boîte. Le joueur doit décider d'accepter l'offre (\"deal\") ou de continuer à jouer (\"no deal\") pour tenter de gagner plus. Le jeu se termine quand le joueur accepte une offre ou ouvre toutes les boîtes.", "Commencer le jeu", "Choisir une malette", "La malette choisi est ", ". Svp choisir ", "L'offre du banquier est", "Ta malette contient", "$", "Merci d'avoir joué Deal or no deal"];
 const array_numero_malettes = [6,5,4,3,2,1];
 let boutton_debut = false;
+let choix_malette = 0;
+let num_malette_choisi = 0;
+;let malette_restant = 6;
 
 function montants() {
     if (montants_malette.length === 0) { // Only add if array is empty
@@ -41,7 +44,7 @@ middleColumn.innerHTML = "";
 montants_malette.forEach(valeur =>{
     const div = document.createElement('div');
     div.textContent = valeur;
-    div.onclick = function() { malette_choisi(valeur);div.style.visibility = "hidden";}
+    div.onclick = function() { if (boutton_debut==true && num_malette_choisi==0 ) {div.style.visibility = "hidden";};malette_choisi(valeur);}
     middleColumn.appendChild(div);
 
 })
@@ -70,9 +73,22 @@ function boutton_jeu(){
 
 }
 
+malette_top = document.createElement("div");
+malette_top.id = "malette_top";
+let boutton_continue = document.createElement("div");
+boutton_continue.id = "boutton_continue";
+
 function malette_choisi(valeur) {
-    if (boutton_debut==true) {
-        message.textContent = array_messages[5]+valeur+array_messages[6];
+    if (boutton_debut==true && num_malette_choisi==0) {
+        num_malette_choisi = num_malette_choisi+1;
+        message.textContent = array_messages[5];
+        choix_malette = valeur;
+        malette_top.textContent = choix_malette;
+        const message_2 = document.getElementById("message_2"); 
+        message_2.appendChild(malette_top);
+        boutton_continue.textContent = "Continuer le jeu"
+        message_2.appendChild(boutton_continue);
+        //topSection.textContent = array_messages[6]+malette_restant+" autres malettes.";
     }
     
 }
