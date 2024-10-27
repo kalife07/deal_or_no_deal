@@ -6,6 +6,7 @@ const montant_grand = ["$1,000","$5,000","$10,000","$25,000","$50,000","$75,000"
 const montants_malette = [];
 const array_messages = ["malette","Bienvenue au jeu!", "\"Deal or No Deal\" est un jeu où le joueur choisit une boîte contenant une somme d'argent cachée. Ensuite, il ouvre d'autres boîtes pour révéler leurs montants. Après chaque série d'ouvertures, un banquier propose une offre d'argent pour racheter sa boîte. Le joueur doit décider d'accepter l'offre (\"deal\") ou de continuer à jouer (\"no deal\") pour tenter de gagner plus. Le jeu se termine quand le joueur accepte une offre ou ouvre toutes les boîtes.", "Commencer le jeu", "Choisir une malette", "La malette choisi est ", ". Svp choisir", "L'offre du banquier est", "Ta malette contient", "$", "Merci d'avoir joué Deal or no deal"];
 const array_numero_malettes = [6,5,4,3,2,1];
+let boutton_debut = false;
 
 function montants() {
     if (montants_malette.length === 0) { // Only add if array is empty
@@ -61,6 +62,7 @@ const message = document.createElement("div");
 message.id = "message_2";
 
 function boutton_jeu(){
+    boutton_debut = true;
     document.getElementById("boutton_jeu").style.display="none";
     message.textContent = array_messages[4];
     const topSection = document.getElementById("top-section"); 
@@ -69,7 +71,10 @@ function boutton_jeu(){
 }
 
 function malette_choisi(valeur) {
-    message.textContent = array_messages[5]+valeur+array_messages[6];
+    if (boutton_debut==true) {
+        message.textContent = array_messages[5]+valeur+array_messages[6];
+    }
+    
 }
 
 function driver() {
