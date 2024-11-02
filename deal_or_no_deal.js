@@ -93,6 +93,13 @@ function malette_choisi(valeur) {
     
 }
 
+function shuffleArray(array) { 
+    array.sort(() => Math.random() - 0.5);
+ }
+
 function driver() {
+    const montants_total = montant_petit.concat(montant_grand);
+    shuffleArray(montants_total);
+    console.log(montants_total, montants_malette);
     
 }
