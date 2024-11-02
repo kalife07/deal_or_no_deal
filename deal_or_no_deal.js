@@ -76,7 +76,7 @@ function boutton_jeu(){
 
 function choisir_malettes() {
     document.getElementById("boutton_continue").style.display="none";
-    msg_choisir_mal = array_messages[6]+malette_restant+" malettes.";
+    msg_choisir_mal = array_messages[6]+array_numero_malettes[0]+" malettes.";
     div_msg_choisir_mal = document.createElement('div');
     div_msg_choisir_mal.textContent = msg_choisir_mal;
     document.getElementById("message_2").appendChild(div_msg_choisir_mal)
