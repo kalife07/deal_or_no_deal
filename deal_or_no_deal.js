@@ -10,6 +10,7 @@ let boutton_debut = false;
 let choix_malette = 0;
 let num_malette_choisi = 0;
 ;let malette_restant = 6;
+let valeurs_malettes = {};
 
 function montants() {
     if (montants_malette.length === 0) { // Only add if array is empty
@@ -44,7 +45,7 @@ middleColumn.innerHTML = "";
 montants_malette.forEach(valeur =>{
     const div = document.createElement('div');
     div.textContent = valeur;
-    div.onclick = function() { if (boutton_debut==true && num_malette_choisi==0 ) {div.style.visibility = "hidden";};malette_choisi(valeur);}
+    div.onclick = function() { if (boutton_debut==true && num_malette_choisi==0 ) {div.style.visibility = "hidden";alert(valeurs_malettes[valeur]);} malette_choisi(valeur);}
     middleColumn.appendChild(div);
 
 })
@@ -97,11 +98,12 @@ function shuffleArray(array) {
     array.sort(() => Math.random() - 0.5);
  }
 
+
+
 function driver() {
     const montants_total = montant_petit.concat(montant_grand);
     shuffleArray(montants_total);
     //console.log(montants_total, montants_malette);
-    let valeurs_malettes = {};
     for (let i=0;i<montants_malette.length;i++) {
         valeurs_malettes[i+1] = montants_total[i];
     }
