@@ -15,7 +15,7 @@
 .middle_column {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Multiple boxes in one row */
-    gap: 50px; /* Space between the boxes */
+    gap: 30px; /* Space between the boxes */
     justify-items: center; /* Center the boxes in the grid */
     padding: 10px;
     max-width: 600px; /* Ensures middle column doesn't get too wide */
@@ -25,12 +25,13 @@
 .middle_column > div{
     background-color: #66ffff;
     padding:20px;
+    margin:0px;
     font-size: 30px;
     display: flex; 
     align-items: center; 
     justify-content: center;
-    width: 100px;
-    height: 50px;
+    width: 75px;
+    height: 10px;
     border: 4px solid #0000ff;
     border-radius: 10px;
     color:#0000ff
@@ -40,10 +41,10 @@
 .left_box, .right_box { display: flex; 
     align-items: center; 
     justify-content: center;
-    width: 100px;
-    height: 50px;
-    margin: 10px;
-    padding:20px;
+    width: 80px;
+    height: 15px;
+    margin: 3px;
+    padding:13px;
 }
 
 .left-column, .right_column {
@@ -91,8 +92,8 @@
 
 #boutton_jeu{
     margin:10px;
-    width:300px;
-    height:75px;
+    width:200px;
+    height:50px;
     background-color:beige;
 }
 

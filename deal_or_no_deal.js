@@ -68,6 +68,7 @@ message.id = "message_2";
 function boutton_jeu(){
     boutton_debut = true;
     document.getElementById("boutton_jeu").style.display="none";
+    document.getElementById("explication").style.display="none";
     message.textContent = array_messages[4];
     const topSection = document.getElementById("top-section"); 
     topSection.appendChild(message);
