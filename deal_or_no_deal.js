@@ -11,6 +11,7 @@ let choix_malette = 0;
 let num_malette_choisi = 0;
 let malette_restant = 6;
 let valeurs_malettes = {};
+let choix_plusieurs_malettes = false;
 
 function montants() {
     if (montants_malette.length === 0) { // Only add if array is empty
@@ -45,7 +46,18 @@ middleColumn.innerHTML = "";
 montants_malette.forEach(valeur =>{
     const div = document.createElement('div');
     div.textContent = valeur;
-    div.onclick = function() { if (boutton_debut==true && num_malette_choisi==0 ) {div.style.visibility = "hidden";alert(valeurs_malettes[valeur]);} malette_choisi(valeur);}
+    div.onclick = function() {if (choix_plusieurs_malettes==false){
+        if (boutton_debut==true && num_malette_choisi==0 ) {
+        div.style.visibility = "hidden";
+        alert(valeurs_malettes[valeur]);} 
+        malette_choisi(valeur);}
+        /*else {
+            for (let i=0;i<26;i++) {     
+                if (valeur==valeurs_malettes[i+1]){
+                    div.style.display="none";
+                }
+        } }*/
+            }
     middleColumn.appendChild(div);
 
 })
@@ -76,11 +88,13 @@ function boutton_jeu(){
 }
 
 function choisir_malettes() {
+    choix_plusieurs_malettes = true
     document.getElementById("boutton_continue").style.display="none";
-    msg_choisir_mal = array_messages[6]+array_numero_malettes[0]+" malettes.";
+    msg_choisir_mal = "\n"+array_messages[6]+array_numero_malettes[0]+" malettes.";
     div_msg_choisir_mal = document.createElement('div');
     div_msg_choisir_mal.textContent = msg_choisir_mal;
     document.getElementById("message_2").appendChild(div_msg_choisir_mal)
+
 }
 
 malette_top = document.createElement("div");
@@ -89,18 +103,38 @@ let boutton_continue = document.createElement("div");
 boutton_continue.id = "boutton_continue";
 
 function malette_choisi(valeur) {
-    if (boutton_debut==true && num_malette_choisi==0) {
+    /*if (boutton_debut==true && num_malette_choisi==0) {
         num_malette_choisi = num_malette_choisi+1;
         message.textContent = array_messages[5];
         choix_malette = valeur;
         malette_top.textContent = choix_malette;
         const message_2 = document.getElementById("message_2"); 
         message_2.appendChild(malette_top);
-        boutton_continue.textContent = "Continuer le jeu";
+        boutton_continue.textContent = "Continuer le jeu"; 
+        message_2.appendChild(boutton_continue); 
+        boutton_continue.onclick = function() { choisir_malettes(); } // Create a new row (div) for displaying additional content 
+        const newRow = document.createElement("div"); newRow.className = "new-row"; // Add a class for styling, if needed 
+        newRow.textContent = "New row added dynamically!"; newRow.style.marginTop = "10px";
         message_2.appendChild(boutton_continue);
         boutton_continue.onclick = function() {choisir_malettes();}
         //topSection.textContent = array_messages[6]+malette_restant+" autres malettes.";
-    }
+    }*/
+
+        if (boutton_debut == true && num_malette_choisi == 0) { // Increment the number of selected malettes 
+            num_malette_choisi = num_malette_choisi + 1; // Update the message to inform the user 
+            message.textContent = array_messages[5]; 
+            choix_malette = valeur; 
+            malette_top.textContent = choix_malette; // Get the message_2 element and append the current malette choice 
+            const message_2 = document.getElementById("message_2"); message_2.appendChild(malette_top); // Create a new row for the "Continuer le jeu" button 
+            const buttonRow = document.createElement("div"); 
+            buttonRow.className = "button-row"; // Add a class for styling, if needed 
+            buttonRow.style.marginTop = "10px"; // Example styling // Update and add the "Continuer le jeu" button 
+            boutton_continue.textContent = "Continuer le jeu"; 
+            buttonRow.appendChild(boutton_continue); // Add button to the new row 
+            message_2.appendChild(buttonRow); // Append the new row to the parent 
+            // Set up the onclick event for the button 
+            boutton_continue.onclick = function() { choisir_malettes(); };
+        }
     
 }
 
