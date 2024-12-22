@@ -46,18 +46,44 @@ middleColumn.innerHTML = "";
 montants_malette.forEach(valeur =>{
     const div = document.createElement('div');
     div.textContent = valeur;
-    div.onclick = function() {if (choix_plusieurs_malettes==false){
-        if (boutton_debut==true && num_malette_choisi==0 ) {
-        div.style.visibility = "hidden";
-        alert(valeurs_malettes[valeur]);} 
-        malette_choisi(valeur);}
+    num_malette = 0
+    div.onclick = function() {
+        if (choix_plusieurs_malettes==false){
+            if (boutton_debut==true && num_malette_choisi==0 ) {
+                div.style.visibility = "hidden";
+                // ici
+                while (num_malette<6) {
+                alert(valeurs_malettes[valeur]); 
+            malette_choisi(valeur);
+        }
+        }
+        }
+        else {
+            /*num_malette += 1;
+            alert(valeurs_malettes[valeur]);
+            console.log(num_malette);
+            console.log(choix_plusieurs_malettes);
+            if (num_malette>6) {
+                choix_plusieurs_malettes=false;*/
+            
+                num_malette += 1;
+                alert(valeurs_malettes[valeur]);
+                console.log(num_malette);
+                console.log(choix_plusieurs_malettes);
+            
+            choix_plusieurs_malettes=false;
+
+        }
+
+    }
+
         /*else {
             for (let i=0;i<26;i++) {     
                 if (valeur==valeurs_malettes[i+1]){
                     div.style.display="none";
                 }
         } }*/
-            }
+            
     middleColumn.appendChild(div);
 
 })
@@ -94,6 +120,7 @@ function choisir_malettes() {
     div_msg_choisir_mal = document.createElement('div');
     div_msg_choisir_mal.textContent = msg_choisir_mal;
     document.getElementById("message_2").appendChild(div_msg_choisir_mal)
+    
 
 }
 
