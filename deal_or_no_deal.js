@@ -86,10 +86,32 @@ function boutton_jeu() {
 function choisir_malettes() {
     choix_plusieurs_malettes = true;
     document.getElementById("boutton_continue").style.display = "none";
-    const msg_choisir_mal = `\n${array_messages[6]} ${array_numero_malettes[0]} malettes.`;
-    const div_msg_choisir_mal = document.createElement('div');
-    div_msg_choisir_mal.textContent = msg_choisir_mal;
-    document.getElementById("message_2").appendChild(div_msg_choisir_mal);
+    div_msg_choisir_mal = document.getElementById("msg_choisir_mal");
+    if (!div_msg_choisir_mal) {
+        div_msg_choisir_mal = document.createElement('div');
+        div_msg_choisir_mal.id = "msg_choisir_mal";
+        document.getElementById("message_2").appendChild(div_msg_choisir_mal);
+    }
+    function updateMessage() {
+        const remaining = array_numero_malettes.length - selectedMalettes.length;
+        div_msg_choisir_mal.textContent = array_messages[6] + remaining + " malettes.";
+    }
+
+    updateMessage();
+    const middleColumn = document.querySelector(".middle_column");
+    middleColumn.querySelectorAll("div").forEach(div => {
+        div.style.pointerEvents = "auto";
+        div.style.cursor = "pointer";
+        div.onclick = function () {
+            const maletteValue = parseInt(div.textContent);
+            const montant = valeurs_malettes[maletteValue];
+            malette_choisi(maletteValue);
+            updateMessage();
+            if (selectedMalettes.length === array_numero_malettes.length) {
+                choix_plusieurs_malettes = false;
+            }
+        };
+    });
 }
 
 const malette_top = document.createElement("div");
@@ -114,8 +136,29 @@ function malette_choisi(valeur) {
                 amountDiv.style.color = "red"; // Change the color to red
                 amountDiv.style.fontWeight = "bold"; // Optional: Make the text bold
                 amountDiv.style.backgroundColor = "blue";
+                
             }
+            if (selectedMalettes.length === maxSelections) {
+                // Replace the message with "Hello"
+                const div_msg_choisir_mal = document.getElementById("msg_choisir_mal");
+                if (div_msg_choisir_mal) {
+                    div_msg_choisir_mal.textContent = "Offre du banquier";
+                }
+
+                // Disable further interactions with malettes
+                const allMalettes = document.querySelectorAll(".middle_column div");
+                allMalettes.forEach(div => {
+                    div.style.pointerEvents = "none"; // Disable pointer events
+                    div.style.cursor = "default"; // Change cursor to default
+                });
+
+                // Proceed to the next phase if needed
+                handleNextPhase();
+            }
+        } else {
+            // Do nothing as max selections are already made
         }
+        
     }
     else if (boutton_debut && num_malette_choisi === 0) {
         num_malette_choisi++;
