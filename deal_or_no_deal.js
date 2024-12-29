@@ -47,25 +47,15 @@ montants_malette.forEach(valeur => {
     div.textContent = valeur;
     //let num_malette = 0;
 
-    div.onclick = function() {
-        if (choix_plusieurs_malettes && num_malette < 6) {
-            num_malette++;
-            if (boutton_debut && num_malette_choisi === 0) {
-                div.style.visibility = "hidden";
-                malette_choisi(valeur);
-            }
-        } else {
-            if (num_malette < 6) {
-                num_malette++;
-                alert(num_malette);
-                div.style.visibility = "hidden"; // montrer espace vide de la selection
-                alert(valeurs_malettes[valeur]); // montre valeure selection
-                if (num_malette === 6) {
-                    choix_plusieurs_malettes = false; // arrete choix
-                    alert("Vous avez sélectionné toutes les mallettes requises!");
-                }
-            }
-        }
+    div.onclick = function() {if (choix_plusieurs_malettes==false){
+        if (boutton_debut==true && num_malette_choisi==0 ) {
+        div.style.visibility = "hidden";
+        //alert(valeurs_malettes[valeur]);
+        } 
+        malette_choisi(valeur);}
+            
+            
+        
     };
 
     middleColumn.appendChild(div);
