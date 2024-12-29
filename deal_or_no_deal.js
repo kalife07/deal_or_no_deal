@@ -106,9 +106,47 @@ const malette_top = document.createElement("div");
 malette_top.id = "malette_top";
 const boutton_continue = document.createElement("div");
 boutton_continue.id = "boutton_continue";
+let selectedMalettes = [];
+let maxSelections = 6;
 
 function malette_choisi(valeur) {
-    if (boutton_debut && num_malette_choisi === 0) {
+    if (choix_plusieurs_malettes) {
+        if (selectedMalettes.length<maxSelections) {
+            selectedMalettes.push(valeur);
+
+            Array.from(document.querySelectorAll(".middle_column div")).find(div => div.textContent == valeur);
+            if (div) div.style.visibility = "hidden";
+            const montant = valeurs_malettes[valeur];
+
+            const amountDiv = Array.from(document.querySelectorAll(".left-column .box, .right_column .box"))
+                .find(div => div.textContent === montant);
+            if (amountDiv) {
+                amountDiv.style.color = "red"; // Change the color to red
+                amountDiv.style.fontWeight = "bold"; // Optional: Make the text bold
+                amountDiv.style.backgroundColor = "blue";
+            }
+        }
+    }
+    else if (boutton_debut && num_malette_choisi === 0) {
+        num_malette_choisi++;
+        choix_malette = valeur;
+        const montant = valeurs_malettes[valeur];
+        message.textContent = array_messages[5];
+        malette_top.textContent = choix_malette;
+        const message_2 = document.getElementById("message_2");
+        message_2.appendChild(malette_top);
+        //ajout du boutton continuer le jeu
+        const buttonRow = document.createElement("div");
+        buttonRow.className = "button-row";
+        buttonRow.style.marginTop = "10px";
+        boutton_continue.textContent = "Continuer le jeu";
+        buttonRow.appendChild(boutton_continue);
+        message_2.appendChild(buttonRow);
+        boutton_continue.onclick = function () {
+            choisir_malettes();
+        };
+    }
+    /*if (boutton_debut && num_malette_choisi === 0) {
         num_malette_choisi++;
         message.textContent = array_messages[5];
         choix_malette = valeur;
@@ -119,7 +157,7 @@ function malette_choisi(valeur) {
         boutton_continue.textContent = "Continuer le jeu";
         message_2.appendChild(boutton_continue);
         boutton_continue.onclick = choisir_malettes;
-    }
+    }*/
 }
 
 function shuffleArray(array) { 
