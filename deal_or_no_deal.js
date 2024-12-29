@@ -19,14 +19,14 @@ let choix_plusieurs_malettes = false;
 
 function montants() {
     if (montants_malette.length === 0) { 
-        for (let i = 1; i <= 26; i++) {
+        for (let i = 1; i < 27; i++) {
             montants_malette.push(i);
         }
     }
     return montants_malette;
 }
 
-montants();
+montants_milieu = montants();
 
 const leftColumn = document.querySelector(".left-column");
 leftColumn.innerHTML = "";
