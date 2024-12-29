@@ -126,7 +126,8 @@ function malette_choisi(valeur) {
         if (selectedMalettes.length<maxSelections) {
             selectedMalettes.push(valeur);
 
-            Array.from(document.querySelectorAll(".middle_column div")).find(div => div.textContent == valeur);
+            
+            const div = Array.from(document.querySelectorAll(".middle_column div")).find(div => div.textContent == valeur);
             if (div) div.style.visibility = "hidden";
             const montant = valeurs_malettes[valeur];
 
