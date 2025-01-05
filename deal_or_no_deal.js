@@ -241,4 +241,8 @@ function fin_jeu() {
 
 }
 
+function offre_banquier() {
+    //a remplir
+}
+
 driver();
