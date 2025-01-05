@@ -154,3 +154,18 @@
     color:black;
     gap: 10px;
 }
+
+.offre {
+    background-color: lightgray;
+    padding:15px;
+    font-size: 15px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    width: 60px;
+    height: 10px;
+    border: 4px solid grey;
+    border-radius: 10px;
+    color:black;
+    gap: 10px;
+}

@@ -120,6 +120,12 @@ const boutton_continue = document.createElement("div");
 boutton_continue.id = "boutton_continue";
 let selectedMalettes = [];
 let maxSelections = 6;
+const boutton_accepter = document.createElement("div");
+const boutton_refuser = document.createElement("div");
+boutton_accepter.id = "accepter";
+boutton_refuser.id = "refuser";
+boutton_accepter.className = "offre";
+boutton_refuser.className = "offre";
 
 function malette_choisi(valeur) {
     if (choix_plusieurs_malettes) {
@@ -143,7 +149,18 @@ function malette_choisi(valeur) {
                 // Replace the message with "Hello"
                 const div_msg_choisir_mal = document.getElementById("msg_choisir_mal");
                 if (div_msg_choisir_mal) {
+                    const message_2 = document.getElementById("message_2");
                     div_msg_choisir_mal.textContent = "Offre du banquier";
+                    const buttonRow2 = document.createElement("div");
+                    buttonRow2.className = "button-row";
+                    buttonRow2.style.marginTop = "10px";
+                    boutton_accepter.textContent = "Accepter";
+                    boutton_refuser.textContent = "Refuser";
+                    buttonRow2.appendChild(boutton_accepter);
+                    buttonRow2.appendChild(boutton_refuser);
+                    message_2.appendChild(buttonRow2);
+
+
                 }
 
                 // Disable further interactions with malettes
@@ -193,7 +210,7 @@ function malette_choisi(valeur) {
         boutton_continue.onclick = choisir_malettes;
     }*/
 }
-
+ 
 function shuffleArray(array) { 
     array.sort(() => Math.random() - 0.5);
 }
