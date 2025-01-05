@@ -149,6 +149,7 @@ function malette_choisi(valeur) {
                 // Replace the message with "Hello"
                 const div_msg_choisir_mal = document.getElementById("msg_choisir_mal");
                 if (div_msg_choisir_mal) {
+                    console.log(choix_malette);
                     const message_2 = document.getElementById("message_2");
                     div_msg_choisir_mal.textContent = "Offre du banquier";
                     const buttonRow2 = document.createElement("div");
@@ -159,8 +160,7 @@ function malette_choisi(valeur) {
                     buttonRow2.appendChild(boutton_accepter);
                     buttonRow2.appendChild(boutton_refuser);
                     message_2.appendChild(buttonRow2);
-
-
+                    boutton_accepter.onclick = function () {fin_jeu();}
                 }
 
                 // Disable further interactions with malettes
@@ -223,6 +223,22 @@ function driver() {
         valeurs_malettes[i + 1] = montants_total[i];
     }
     console.log(valeurs_malettes);
+}
+
+const message_fin = document.createElement("div");
+message_fin.id = "message_fin";
+
+function fin_jeu() {
+    const message_2 = document.getElementById("message_2");
+    alert("Jeu terminé");
+    const buttonRow2 = document.createElement("div");
+    buttonRow2.className = "button-row";
+    buttonRow2.style.marginTop = "10px";
+    const montant_mal = valeurs_malettes[choix_malette];
+    message_fin.textContent = "Merci d'avoir joué Deal or no deal\nOffre acceptée : -\nVotre malette contenait : "+montant_mal;
+    buttonRow2.appendChild(message_fin);
+    message_2.appendChild(buttonRow2);
+
 }
 
 driver();
