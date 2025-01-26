@@ -238,6 +238,8 @@ function fin_jeu() {
     message_fin.textContent = "Merci d'avoir joué Deal or no deal\nOffre acceptée : -\nVotre malette contenait : "+montant_mal;
     buttonRow2.appendChild(message_fin);
     message_2.appendChild(buttonRow2);
+    const divs_selectionne = document.querySelectorAll('#accepter, #refuser, #msg_choisir_mal');
+    divs_selectionne.forEach(el => el.style.display = 'none');
 
 }
 
