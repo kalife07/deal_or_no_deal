@@ -169,7 +169,7 @@ function malette_choisi(valeur) {
                     div.style.pointerEvents = "none"; // Disable pointer events
                     div.style.cursor = "default"; // Change cursor to default
                 });
-
+                console.log(selectedMalettes);
                 // Proceed to the next phase if needed
                 handleNextPhase();
             }
@@ -222,7 +222,9 @@ function driver() {
     for (let i = 0; i < montants_malette.length; i++) {
         valeurs_malettes[i + 1] = montants_total[i];
     }
+    filter(montants_malette, valeurs_malettes);
     console.log(valeurs_malettes);
+    console.log(selectedMalettes);
 }
 
 const message_fin = document.createElement("div");
@@ -243,8 +245,19 @@ function fin_jeu() {
 
 }
 
-function offre_banquier() {
+function offre_banquier(remainingValues, roundNumber, maxRounds) {
     //a remplir
+    // remainingValues = array qui contient les montants restants
+    // etape 1: calculation de la somme de remaining Values
+
+    console.log(remainingValues);
 }
+
+function filter(mainArray, selectedMalettes) {
+    // Filter out elements whose indexes are in the positionsToRemove array 
+    return mainArray.filter((_, index) => !selectedMalettes.includes(index));
+ }
+
+
 
 driver();
