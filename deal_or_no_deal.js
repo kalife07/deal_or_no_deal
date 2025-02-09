@@ -122,7 +122,7 @@ function choisir_malettes() {
        if (remaining > 0) {
            div_msg_choisir_mal.textContent = array_messages[6] + remaining + " malettes.";
        } else {
-           div_msg_choisir_mal.textContent = "Offre du banquier:"; // Montre l'offre du banquier
+           div_msg_choisir_mal.textContent = "Offre du banquier: "+offre_banquier(remainingMalettes, 1, 6); // Montre l'offre du banquier
        }
    }
 
@@ -157,7 +157,7 @@ boutton_accepter.id = "accepter";
 boutton_refuser.id = "refuser";
 boutton_accepter.className = "offre";
 boutton_refuser.className = "offre";
-
+let remainingMalettes = montants_malette.filter(m => !selectedMalettes.includes(m));
 
 
 
@@ -186,7 +186,7 @@ function malette_choisi(valeur) {
            if (selectedMalettes.length === maxSelections) {
                const div_msg_choisir_mal = document.getElementById("msg_choisir_mal");
                // Claudia added
-               const remainingMalettes = montants_malette.filter(m => !selectedMalettes.includes(m)); // Calculate remaining malettes
+               remainingMalettes = montants_malette.filter(m => !selectedMalettes.includes(m)); // Calculate remaining malettes
 
 
                if (div_msg_choisir_mal) {
@@ -318,8 +318,7 @@ function offre_banquier(remainingValues, roundNumber, maxRounds) {
    for (let i=0;i<remainingValues.length;i++) {
         sum = sum+valeurs_malettes[remainingValues[i]];
    }
-   console.log(sum);
-   console.log(remainingValues);
+   
 
    for (let i=0;i<remainingValues.length;i++) {
     if(valeurs_malettes[remainingValues[i]].substring(1).includes(',')){
@@ -331,7 +330,22 @@ function offre_banquier(remainingValues, roundNumber, maxRounds) {
     }
     
     console.log(num_string);
+    console.log(sum);
+    console.log(typeof(parseFloat(sum)));
+    console.log(remainingValues);
+    nb_restant = remainingValues.length; //2.1 (calculer le nombre de malettes restants)
+    console.log(nb_restant); 
+    console.log(typeof(nb_restant));
+    console.log(parseFloat(sum) + " " +nb_restant);
+    val_moyenne = parseFloat(num_string)/nb_restant; //2.2 (calculer la moyenne des valeurs des malettes restants)
+    console.log(val_moyenne);
+
+    let rand_var = (Math.random()*0.45)+0.3;
+    console.log(rand_var.toFixed(2));
+    let offre = rand_var*val_moyenne;
+    console.log(Math.ceil(offre));
     //+num_string;
+    return offre;
    }
    
    
